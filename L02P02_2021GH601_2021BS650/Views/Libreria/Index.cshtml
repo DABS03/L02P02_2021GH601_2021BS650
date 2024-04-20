@@ -3,12 +3,13 @@
     IEnumerable<string> strList = new List<string> { "Lovecraft", "Juan", "Pedro", "JOhn" };
     IEnumerable<string> strList2 = new List<string> { "Acción", "Comedia", "Drama", "Manga" };
 }
-<form asp-action="Librerias">
+<form asp-action="EliminarLibro">
     <div class="text-center">
-        <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-dark bg-primary ">
             <div>
-                <div class="card-body d-flex justify-content-center">
-                    <h5 class="fw-bold" style="font-size: 15px;">Creación de Libros</h5>
+                <div class="card-body justify-content-center">
+                    <img src="640px-UNICAES_Logo.png" >
+                    <h5 class="fw-bold" style="font-size: 15px; color: white">Creación de Libros</h5>
                 </div>
             </div>
         </nav>
@@ -49,4 +50,38 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del libro</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Autor</th>
+                    <th>Categoria</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var libro in (IEnumerable<dynamic>)ViewData["listLibros"])
+                {
+                    <tr>
+                        <td>@libro.nombre</td>
+                        <td>@libro.descripcion</td>
+                        <td>@libro.precio</td>
+                        <td>@libro.id_autor</td>
+                        <td>@libro.id_categoria</td>
+                        <td><input type="button" class="btn btn-danger" value="Eliminar" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <div class="navbar navbar-dark bg-primary text-center text-justify-center">
+            <a style="color: white;">2021-GH-601 - Fernando Ulises Gómez Herrera</a>
+            <a style="color: white;">2021-BS-650 - Diego Alejandro Burgos Servellón</a>
+        </div>
+    </footer>
 </form>
