@@ -1,8 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    <form asp-action="Librerias">
-        <div
-    </form>
+﻿@{
+    ViewData["Title"] = "Lab 02";
+    IEnumerable<string> strList = new List<string> { "Lovecraft", "Juan", "Pedro", "JOhn" };
+    IEnumerable<string> strList2 = new List<string> { "Acción", "Comedia", "Drama", "Manga" };
 }
+<form asp-action="Librerias">
+    <div class="text-center">
+        <nav class="navbar navbar-dark bg-primary">
+            <div>
+                <div class="card-body d-flex justify-content-center">
+                    <h5 class="fw-bold" style="font-size: 15px;">Creación de Libros</h5>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <div class="form-group row mb-2">
+            <div class="col-sm-2">
+                <label>Nombre del libro</label>
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBox("nombre","", new{@class="form-control"})
+            </div>
+            <div class="col-sm-2">
+                @Html.Label("lblDescripcion", "Descripción")
+            </div>
+            <div class="col-sm-4">
+                @Html.TextArea("descripcion", "", new { @class = "form-control", @placeHolder = "Ingrese la descripción" })
+            </div>
+            <div class="col-sm-2">
+                <label>Precio</label>
+            </div>
+            <div class="col-sm-4">
+                @Html.TextBox("precio", "", new { @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
+                <label>Autor</label>
+            </div>
+            <div class="col-sm-4">
+                @Html.DropDownList("ddlAutor", new SelectList(strList,
+                         strList.FirstOrDefault()), "--Seleccionar Autor ----")
+            </div>
+            <div class="col-sm-2">
+                <label>Categoria o Genero</label>
+            </div>
+            <div class="col-sm-4">
+                @Html.DropDownList("ddlGenero", new SelectList(strList2,
+                         strList.FirstOrDefault()), "--Seleccionar Autor ----")
+            </div>
+        </div>
+    </section>
+</form>
